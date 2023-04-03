@@ -1,0 +1,114 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.todo_main{
+  width: 100%;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+ 
+.todo_main form{
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0px 0px 5px black;
+  width: 50%;
+}
+.todo_main form h1{
+  padding-bottom: 1rem;
+  color: crimson;
+}
+.todo_main form label{
+  margin-bottom: .5rem;
+  font-size: 1.1rem;
+}
+.todo_main form input, textarea {
+  width: 60%;
+  padding: .5rem;
+  border-radius: 5px;
+}
+.todo_main form select{
+  width: 20%;
+  padding: .5rem;
+}
+.todo_main form button{
+  padding: 1rem 2rem;
+  border: none;
+  outline: none;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.todo_main form button:hover{
+background-color: rgb(66, 160, 66);
+}
+.todo_main form button:active{
+  background-color: green;
+  }
+  .todo_main form .editBtn{
+  background-color: crimson;
+ }
+ .todo_main form .editBtn:hover{
+  background-color: rgb(227, 72, 103);
+ }
+ .todo_main form .editBtn:active{
+  background-color: crimson;
+ }
+.todo_box_container{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.todo_box{
+  width: 22%;
+  height: 50vh;
+  overflow-y: scroll;
+  border-radius: 5px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0px 0px 5px rgb(209, 207, 207);
+  position: relative;
+}
+
+.todo_box::-webkit-scrollbar{
+  display: none;
+}
+.todo_box h2{
+  text-align: center;
+  font-size: 2rem;
+}
+.todo_box p span {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.btnContainer{
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  position: absolute;
+  bottom: 0;
+}
+.btnContainer button{
+  padding: 1rem;
+  border: none;
+  outline: none;
+ background: transparent;
+  color: black;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
