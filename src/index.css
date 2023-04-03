@@ -112,3 +112,10 @@ background-color: rgb(66, 160, 66);
   font-size: 1.5rem;
   font-weight: bold;
 }
+.todo_time{
+  position: absolute;
+  bottom: 4rem;
+}
+.todo_time p span{
+  font-size: 1rem;
+}

@@ -9,7 +9,6 @@ function Todo() {
 
   useEffect(() => {
     const storedInputArr = JSON.parse(localStorage.getItem('inputDetailItems'));
-    
     setInputArr(storedInputArr);
   }, []);
 
@@ -25,14 +24,22 @@ function Todo() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const now = new Date();
-    // console.log(now);
-    const formattedDate = now.toLocaleDateString();
-    const formattedTime = now.toLocaleTimeString();
-    const todoItem = { ...inputs, date: formattedDate, time: formattedTime };
+    // const now = new Date();
+    // const formattedDate = now.toLocaleDateString();
+    // const formattedTime = now.toLocaleTimeString();
+    // const todoItem = { ...inputs, date: formattedDate, time: formattedTime };
+
     if (inputs.todoname && inputs.todoDescription && editIndex === null) {
+      const now = new Date();
+      const formattedDate = now.toLocaleDateString();
+      const formattedTime = now.toLocaleTimeString();
+      const todoItem = { ...inputs, currentdate: formattedDate, currenttime: formattedTime };
       setInputArr(arrVal => ([...arrVal, todoItem]));
     } else {
+      const now = new Date();
+      const formattedDate = now.toLocaleDateString();
+      const formattedTime = now.toLocaleTimeString();
+      const todoItem = { ...inputs, updateddate: formattedDate, updatedtime: formattedTime };
       const updatedArr = [...inputArr];
       updatedArr[editIndex] = todoItem;
       setInputArr(updatedArr);
@@ -60,35 +67,37 @@ function Todo() {
     <div className='todo_main'>
       <form onSubmit={handleSubmit}>
         <h1>Todo List</h1>
-        <label>*Enter Todo</label> 
-        <input type="text" placeholder='Enter Todo' name="todoname" value={inputs.todoname || ""} onChange={handlechange} required autoComplete='off'/> <br />
+        <label>*Enter Todo</label>
+        <input type="text" placeholder='Enter Todo' name="todoname" value={inputs.todoname || ""} onChange={handlechange} required autoComplete='off' /> <br />
         <label>*Enter Todo Description</label>
-        <textarea name="todoDescription" id="" cols="30" rows="5" value={inputs.todoDescription || ""} onChange={handlechange} placeholder='*Enter Todo Description' required/> <br />
-         <select name="color" id="" value={inputs.color || ""}  onChange={handlechange}>
+        <textarea name="todoDescription" id="" cols="30" rows="5" value={inputs.todoDescription || ""} onChange={handlechange} placeholder='*Enter Todo Description' required /> <br />
+        <select name="color" id="" value={inputs.color || ""} onChange={handlechange}>
           <option value="">Select Color</option>
-          <option value= "lightcoral">Light Crimson</option>
+          <option value="lightcoral">Light Crimson</option>
           <option value="yellow">Yellow</option>
           <option value="lightGreen" >Light Green</option>
-         </select> <br /> <br />
+        </select> <br /> <br />
         {toggleEdit ? <button className='editBtn'>Edit</button> : <button>Submit </button>}
       </form> <br />
 
       <div style={{ marginTop: "2rem" }} className='todo_box_container'>
-          {inputArr.map((item, index) => {
-            return (
-              <div key={index} style={{backgroundColor:item.color}} className='todo_box'>
-                <h2>{item.todoname}</h2>
-                <p><span> Todo Despription : </span>{item.todoDescription}</p>
-                <p>Date: {item.date}</p>
-                <p>Current Time: {item.time}</p>
-                <div className='btnContainer'>
+        {inputArr.map((item, index) => {
+          return (
+            <div key={index} style={{ backgroundColor: item.color }} className='todo_box'>
+              <h2>{item.todoname}</h2>
+              <p><span> Todo Despription : </span>{item.todoDescription}</p>
+              <div className='todo_time'>
+              <p><span> This Todo was Created on: </span> {item.currentdate} at {item.currenttime}</p>
+              {item.updatedtime && <p><span> This Todo was Updated on: </span> {item.updateddate} at {item.updatedtime}</p>}
+              </div>
+              <div className='btnContainer'>
                 <p><button onClick={() => { handleDelete(index) }}><i class="fa-solid fa-trash-can"></i></button></p>
                 <p><button onClick={() => { handleEdit(index) }}><i class="fa-solid fa-pen-to-square"></i></button></p>
-                </div>
               </div>
-            )
-          })
-          }
+            </div>
+          )
+        })
+        }
       </div>
     </div>
   )
