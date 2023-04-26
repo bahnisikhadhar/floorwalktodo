@@ -9,8 +9,23 @@
  flex-direction: column;
  align-items: center;
 }
- 
-.todo_main form{
+.todoAddBtn{
+  border: none;
+  outline: none;
+  padding: 1rem 2.5rem;
+  margin-top: 1rem;
+  background-color: green;
+  color: white;
+  font-size: 1.3rem;
+  border-radius: 10px;
+} 
+.todoAddBtn:hover{
+  background-color: rgb(32, 152, 32);
+}
+.todoAddBtn:active{
+  background-color: green;
+}
+.form_detail{
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -19,25 +34,31 @@
   padding: 1rem;
   box-shadow: 0px 0px 5px black;
   width: 50%;
+  position: relative;
 }
-.todo_main form h1{
+.fa-x{
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+.form_detail h1{
   padding-bottom: 1rem;
   color: crimson;
 }
-.todo_main form label{
+.form_detail label{
   margin-bottom: .5rem;
   font-size: 1.1rem;
 }
-.todo_main form input, textarea {
+.form_detail input, textarea {
   width: 60%;
   padding: .5rem;
   border-radius: 5px;
 }
-.todo_main form select{
+.form_detail select{
   width: 20%;
   padding: .5rem;
 }
-.todo_main form button{
+.form_detail button{
   padding: 1rem 2rem;
   border: none;
   outline: none;
@@ -47,19 +68,19 @@
   font-size: 1rem;
   font-weight: bold;
 }
-.todo_main form button:hover{
+.form_detail button:hover{
 background-color: rgb(66, 160, 66);
 }
-.todo_main form button:active{
+.form_detail button:active{
   background-color: green;
   }
-  .todo_main form .editBtn{
+  .form_detail .editBtn{
   background-color: crimson;
  }
- .todo_main form .editBtn:hover{
+ .form_detail .editBtn:hover{
   background-color: rgb(227, 72, 103);
  }
- .todo_main form .editBtn:active{
+ .form_detail .editBtn:active{
   background-color: crimson;
  }
 .todo_box_container{
