@@ -28,17 +28,14 @@ function Todo() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // const now = new Date();
-    // const formattedDate = now.toLocaleDateString();
-    // const formattedTime = now.toLocaleTimeString();
-    // const todoItem = { ...inputs, date: formattedDate, time: formattedTime };
-
+    
     if (inputs.todoname && inputs.todoDescription && editIndex === null) {
       const now = new Date();
       const formattedDate = now.toLocaleDateString();
       const formattedTime = now.toLocaleTimeString();
       const todoItem = { ...inputs, currentdate: formattedDate, currenttime: formattedTime };
-      setInputArr(arrVal => ([...arrVal, todoItem]));
+      // setInputArr(arrVal => ([...arrVal, todoItem]));
+      setInputArr(arrVal => ([todoItem,...arrVal])); // new added todo will be shown first
     } else {
       const now = new Date();
       const formattedDate = now.toLocaleDateString();
@@ -51,6 +48,7 @@ function Todo() {
     }
     setInputs({});
     settoggleEdit(false);
+    setIsModalOpen(false);
   }
 
   function handleDelete(index) {
@@ -60,6 +58,7 @@ function Todo() {
   }
 
   function handleEdit(index) {
+    setIsModalOpen(true)
     let newArr = [...inputArr];
     setInputs(newArr[index]);
     setEditIndex(index);
